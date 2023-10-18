@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react'
+import Title from './components/Title';
+import Form from './components/Form';
+import Menu from './components/Menu';
+import ShowMenu from './components/ShowMenu';
 
-function App() {
+const App = () => {
+
+  const basicImage = './img/basic.jpg';
+
+
+  const [selectedMenuItem, setSelectedMenuItem] = React.useState();
+
+  const handleMenuClick = (menuName) => {
+    setSelectedMenuItem(menuName);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Title>커뮤니티</Title>
+      <Form />
+      <Menu onItemClick={handleMenuClick} />
+      {<ShowMenu selectedMenuItem={selectedMenuItem} />}
+
     </div>
   );
-}
+};
 
 export default App;
